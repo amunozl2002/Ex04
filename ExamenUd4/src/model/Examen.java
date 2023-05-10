@@ -1,9 +1,10 @@
 package model;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Locale;
 import java.util.Calendar;
 
-public class Examen {
+public class Examen implements mostrable {
 	
 	// atributos
 	
@@ -16,11 +17,11 @@ public class Examen {
 		DAW2,
 	}	
 	public Ciclo ciclo;
-	Pregunta[] preguntas = new Pregunta[50];
+	ArrayList<Pregunta> preguntas;
 
 	// constructor
 	
-	public Examen(Calendar fecha, String url, Ciclo ciclo, Pregunta[] preguntas) {
+	public Examen(Calendar fecha, String url, Ciclo ciclo, ArrayList<Pregunta>  preguntas) {
 		setFecha(fecha);
 		setUrl(url);
 		setCiclo(ciclo);
@@ -62,11 +63,11 @@ public class Examen {
 		this.url = url;
 	}
 
-	public Pregunta[] getPreguntas() {
+	public ArrayList<Pregunta> getPreguntas() {
 		return preguntas;
 	}
 
-	public void setPreguntas(Pregunta[] preguntas) {
+	public void setPreguntas(ArrayList<Pregunta> preguntas) {
 		this.preguntas = preguntas;
 	}
 	
@@ -82,16 +83,17 @@ public class Examen {
 				"\nFECHA DEL EXAMEN: " + String.format(Locale.US, "%1$tA, %1$tB %1$te, %1$tY", fecha) + 
 				"\nURL: " + url + 
 				"\nCICLO: " + ciclo + 
-				"\nPREGUNTAS: " + Arrays.toString(preguntas);
+				"\nPREGUNTAS: ";
+				for (Pregunta pregunta : preguntas) {
+					respuesta += "\n    " + (pregunta.getEnunciado());
+		};
 	
 		return respuesta;
 			
 	}
 
-	public void añadirPregunta(String enunciado) {
-		
-		
-		
+	public void añadirPregunta(Pregunta pregunta) {
+		this.preguntas.add(pregunta);
 	}
 	
 

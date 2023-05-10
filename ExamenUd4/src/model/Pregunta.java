@@ -1,8 +1,6 @@
 package model;
 
-import java.util.Arrays;
-
-public class Pregunta {
+public class Pregunta implements mostrable {
 	
 	// atributos
 	
@@ -10,7 +8,7 @@ public class Pregunta {
 	private Opcion[] opciones = new Opcion[4];
 
 	// constructor
-	
+
 	public Pregunta(String enunciado, Opcion[] opciones) {
 		setEnunciado(enunciado);
 		setOpciones(opciones);
@@ -36,10 +34,10 @@ public class Pregunta {
 	
 	public String mostrar_informacion() {
 	    String respuesta = ("\n---------- DATOS DE LA PREGUNTA ------------------------------------------------------------------------------" +
-	            "\n" +"\nENUNCIADO : " + enunciado + 
-	            "\nOPCIONES = "); 
+	            "\n" +"\nENUNCIADO: " + enunciado +
+	            "\nOPCIONES: ");
 	    for (int i = 0; i < opciones.length; i++) {
-	        respuesta += "\n" + opciones[i].getTextoRespuesta() + " (" + (opciones[i].getValor() ? "correcta" : "incorrecta") + ")";
+	        respuesta += "\n" + "    " + opciones[i].getTextoRespuesta() + " (" + (opciones[i].getValor() ? "correcta" : "incorrecta") + ")";
 	    }
 	    return respuesta;
 	}

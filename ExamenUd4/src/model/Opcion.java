@@ -1,6 +1,6 @@
 package model;
 
-public class Opcion {
+public class Opcion implements mostrable {
 	
 	// atributos
 	

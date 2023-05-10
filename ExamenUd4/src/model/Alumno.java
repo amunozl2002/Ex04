@@ -1,6 +1,6 @@
 package model;
 
-public class Alumno {
+public class Alumno implements mostrable {
 
 	// atributos
 	
@@ -67,8 +67,8 @@ public class Alumno {
 		String adaptacion = requiereAdaptacion ? "Sí" : "No";
 		String respuesta = ("\n---------- DATOS DEL ALUMNO ------------------------------------------------------------------------------" +
 				"\n" +"\nNOMBRE: " + nombre + 
-				"\nAPELLIDOS = " + apellido1 + " " + apellido2 +  
-				"\nAÑO NACIMIENTO : " + anyoNacimiento + 
+				"\nAPELLIDOS: " + apellido1 + " " + apellido2 +
+				"\nAÑO NACIMIENTO: " + anyoNacimiento +
 				"\nREQUIERE ADAPTACION? " + adaptacion +
 				"\nDESCRIPCIÓN ADAPTACIÓN: " + descripcionAdaptacion);
 		
