@@ -29,6 +29,8 @@ public class Pregunta implements mostrable {
 	}
 
 	public void setOpciones(Opcion[] opciones) {
+		// TODO No admitir todas falsas ni todas verdaderas
+
 		this.opciones = opciones;
 	}
 	

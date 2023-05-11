@@ -8,18 +8,11 @@ public class Aula implements mostrable {
 	private ArrayList<Alumno> alumnos = new ArrayList<>();
 	private String nombre;
 
-	// Necesito que el enum sea público para poder crear aulas desde Main
-	public enum edificio {
-		Norte,
-		Sur,
-		Centro
-	}
-	
-	private edificio edificio;
+	private Edificio edificio;
 	private int alumnosMaximos;
 
 	// constructor
-	public Aula(String nombre, model.Aula.edificio edificio, int alumnosMaximos) {
+	public Aula(String nombre, Edificio edificio, int alumnosMaximos) {
 		super();
 		setNombre(nombre);
 		setEdificio(edificio);
@@ -34,11 +27,11 @@ public class Aula implements mostrable {
 		this.nombre = nombre;
 	}
 
-	public edificio getEdificio() {
+	public Edificio getEdificio() {
 		return edificio;
 	}
 
-	public void setEdificio(edificio edificio) {
+	public void setEdificio(Edificio edificio) {
 		this.edificio = edificio;
 	}
 
@@ -58,33 +51,42 @@ public class Aula implements mostrable {
 		return respuesta;
 	}
 
-	public void añadirAlumno(Alumno alumno) {
+	public int addAlumno(Alumno alumno) {
 		// Verifico si el aula está llena
-
+		int errCode = 0;
 		if (alumnos.size() >= alumnosMaximos) {{
-			System.out.println("No se puede añadir alumno. El aula está llena.");
+			//System.err.println("No se puede añadir alumno. El aula está llena.");
+			errCode = 1;
 		}}
 		// Verifico si el alumno ya está en la clase
 		else if (alumnos.contains(alumno)) {
-			System.out.println("No se puede añadir alumno. El alumno ya está en la clase.");
+			//System.err.println("No se puede añadir alumno. El alumno ya está en la clase.");
+			errCode = 2;
 		}
 		// Agrego al alumno y lo enseño por pantalla
 		else {
 			alumnos.add(alumno);
 			System.out.println("Alumno " + alumno.getNombre() + " " + alumno.getApellido1() + " " + alumno.getApellido2() + " añadido al Aula " + getNombre());
 		}
+		return errCode;
 	}
 
-	public void eliminarAlumno(Alumno alumno) {
+	public boolean delAlumno(Alumno alumno) {
+		boolean isOK = false;
 		// Verifico que el alumno esté asignado al aula antes de borrarlo
 		if (!alumnos.contains(alumno)) {
-			System.out.println("No se puede borrar alumno. Este alumno no está asignado a la clase.");
+			System.err.println("No se puede borrar alumno. Este alumno no está asignado a la clase.");
 		}
 		// Elimino al alumno del aula y lo enseño por pantalla
 		else {
-			alumnos.remove(alumno);
-			System.out.println("Alumno " + alumno.getNombre() + " " + alumno.getApellido1() + " " + alumno.getApellido2() + " eliminado del Aula " + getNombre());
+			isOK = alumnos.remove(alumno);
+			//isOK = true;
+			System.err.println("Alumno " + alumno.getNombre() + " " + alumno.getApellido1() + " " + alumno.getApellido2() + " eliminado del Aula " + getNombre());
 		}
+		return isOK;
+
+
+		//return alumnos.remove(alumno);
 	}
 	
 	

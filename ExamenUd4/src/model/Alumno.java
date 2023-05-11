@@ -3,6 +3,8 @@ package model;
 public class Alumno implements mostrable {
 
 	// atributos
+
+	public static int cont = 0;
 	
 	private String nombre;
 	private String apellido1;
@@ -22,10 +24,15 @@ public class Alumno implements mostrable {
 		setAnyoNacimiento(anyoNacimiento);
 		setRequiereAdaptacion(requiereAdaptacion);
 		setDescripcionAdaptacion(descripcionAdaptacion);
+		cont++;
 	}
 	
 	// getter y setter
-	
+
+
+	public static int getCont() {
+		return cont;
+	}
 	public String getNombre() {
 		return nombre;
 	}
@@ -60,7 +67,7 @@ public class Alumno implements mostrable {
 		return descripcionAdaptacion;
 	}
 	public void setDescripcionAdaptacion(String descripcionAdaptacion) {
-		this.descripcionAdaptacion = descripcionAdaptacion;
+		this.descripcionAdaptacion = isRequiereAdaptacion() ? descripcionAdaptacion : "" ;
 	}
 	
 	public String  mostrar_informacion() {
